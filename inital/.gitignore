@@ -1,1 +1,4 @@
 BOOTICEx64.exe
+*.o
+*.p
+*.bin
