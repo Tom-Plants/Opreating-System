@@ -1,0 +1,20 @@
+MEMORY
+{
+    bootloader : ORIGIN = 0x7c00, LENGTH = 0x1FC 
+    bootflag : ORIGIN = 0x7dfc, LENGTH = 0x04
+}
+SECTIONS
+{
+    /DISCARD/ : {
+        *(.rdata)
+        *(.eh_frame)
+        *(.bss)
+        *(.text)
+        *(.bss)
+        *(.rdata$zzz)
+    }
+    . = 0x7c00;
+    .text : { pre_init.p(.preinitcode) init.p(.initcode) } > bootloader = 0x90
+    .data : { init.p(.sysinitdata) } > bootloader = 0x90
+    .flag 0x7dfc : { init.p(.bootflag) } > bootflag = 0x90
+}
