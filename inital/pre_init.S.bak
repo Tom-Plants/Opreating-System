@@ -24,7 +24,7 @@ sysmain equ 0x7c00+_boot_main
     inc dx
     in al, dx
     and al, 0b11110011
-    out dx, al			; it use VGA function to switch display memory to 0xA0000
+    out dx, al
 
     cli
 
@@ -45,7 +45,7 @@ sysmain equ 0x7c00+_boot_main
 [BITS 32]
 pre_boot_main:
     mov esp, 0x7e00
-    mov ebp, esp	;STACK PROBLEM :make ebp and esp success run in C program it compiled by GCC
+    mov ebp, esp
     call _boot_main
     jmp $
 

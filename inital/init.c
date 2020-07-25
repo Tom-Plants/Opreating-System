@@ -6,7 +6,7 @@ QCHAR message[] = "Hello World!";
 QVOID boot_main()
 {
     //bootloader main
-    //int len = strlen(message);
+    int len = strlen(message);
     *(char *)0xA0000 = 'a';
     //*(char *)0xB8000 = 'a';
     
